@@ -1,0 +1,54 @@
+﻿
+@model IEnumerable<WatchShop.Models.Product>
+@{
+    ViewBag.Title = "ProductCategory";
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+}
+<div class="row">
+    <div class="col-sm-3">
+        <div>
+            <h2>Loại Sản Phẩm</h2>
+            <div class="danhmuc">
+                <ul>
+                    @foreach (var item in Model)
+                    {
+                        @Html.Action("SubCategory", "Module", new { parentid = item.id })
+
+                    }
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-9">
+        <div class="row home-2 px-5">
+            @foreach (var product in Model)
+            {
+                <div class="col-sm-4 text-center mb-2">
+                    <div class="mt-5 img-thumbnail" style="border-style: groove;">
+                        <div class="hinhsp rounded mx-auto d-block ">
+                            <a href="#">
+                                <img src="~/Image/Product/@product.img" class="rounded hinhsp chitietsp" alt="">
+                            </a>
+                            @*<button class="btn btn-info " data-toggle="modal" data-target="#myModal"> Chi tiết</button>*@
+                        </div>
+                        <div class="mt-2">
+                            <div>
+                                <a>@product.name</a>
+                            </div>
+                            <div class="text-danger text-center">
+                                <a>@product.price</a>
+                                <sup>đ</sup>
+                            </div>
+                            <button class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Mua</button>
+                        </div>
+                    </div>
+
+                </div>
+            }
+        </div>
+    </div>
+
+</div>
+

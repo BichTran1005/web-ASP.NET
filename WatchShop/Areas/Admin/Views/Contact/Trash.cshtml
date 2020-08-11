@@ -1,0 +1,95 @@
+﻿
+@model IEnumerable<WatchShop.Models.Contact>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Index</h2>
+<div class="card">
+    <div class="card-header">
+        <div class="row">
+            <div class="col-sm-7">
+                Quản lí loại sản phẩm
+            </div>
+            <div class="col-sm-5 text-right">
+                @*<a href="~/Admin/category/create" class="btn btn-sm btn-success"><i class="fas fa-plus"></i> Thêm</a>*@
+                <a href="~/Admin/contact" class="btn btn-sm btn-danger"><i class="fas fa-times"></i>Thoát</a>
+            </div>
+        </div>
+    </div>
+    <div class="card-body p-2">
+        @Html.Partial("_MessageAlert")
+        <table class="table table-bordered table-hover">
+            <tr>
+                <th>#</th>
+                <th>
+                    @Html.DisplayNameFor(model => model.fullname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.phone)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.detail)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.created_at)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.status)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.fullname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.phone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.detail)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.created_at)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.status)
+                    </td>
+                    <td>
+                        @if (item.status == 1)
+                        {
+                            <a href="@Url.Action("status","Contact", new { id=item.id})" class="btn btn-sm btn-primary"><i class="fas fa-toggle-on"></i></a>
+                        }
+                        else
+                        {
+                            <a href="@Url.Action("status","Contact", new { id=item.id})" class="btn btn-sm btn-danger"><i class="fas fa-toggle-off"></i></a>
+                        }
+
+                        <a href="@Url.Action("Edit", "Contact", new { id = item.id })" , class="btn btn-sm btn-success"><i class="fas fa-edit"></i></a>
+                        <a href="@Url.Action("Detrash", "Contact", new { id = item.id })" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>
+
+                    </td>
+                    <td> @Html.DisplayFor(modelItem => item.id)</td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>

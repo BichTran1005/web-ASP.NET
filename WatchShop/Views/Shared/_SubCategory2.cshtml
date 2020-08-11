@@ -1,0 +1,15 @@
+﻿@model IEnumerable<WatchShop.Models.Category>
+    @{var itemcategory = ViewBag.categoryitem;}
+<li>
+    <a href="~/@itemcategory.slug">@itemcategory.name</a>
+    <ul class="danhmuc-con rounded">
+        @foreach (var item in Model)
+        {
+            <li>
+                <a href="~/@itemcategory.slug">@item.name</a>
+            </li>
+        }
+
+     
+    </ul>
+</li>

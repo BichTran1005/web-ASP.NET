@@ -1,0 +1,27 @@
+﻿@model WatchShop.Models.Product
+@{
+    ViewBag.Title = "ProductDetai";
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+}
+
+<div>
+    <h2>
+        @Model.name
+    </h2>
+    <div class="row">
+        <div class="col-sm-7">
+            <div class="img-thumbnail" style="border-style: groove;">
+                <div class="hinhsp  mx-auto  ">
+                    <img src="~/Image/Product/@Model.img" class="rounded hinhsp chitietsp" alt="">
+                </div>
+            </div>
+        </div>
+      
+        <div class="col-sm-5">
+            <p>Tên sản phẩm: @Model.name</p>
+            <p>Chi tiết sản phẩm: @Model.detail</p>
+            <p>Giá: @Model.price</p>
+            <button class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Mua</button>
+        </div>
+    </div>
+</div>

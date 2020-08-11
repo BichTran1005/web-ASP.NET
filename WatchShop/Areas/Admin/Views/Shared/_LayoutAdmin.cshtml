@@ -1,0 +1,177 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/LayoutAdmin.css" rel="stylesheet" />
+    @*<link href="~/Content/icon.css" rel="stylesheet" />*@
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <script src="~/Scripts/jquery-3.0.0.slim.min.js"></script>
+    <script src="~/Scripts/jquery-3.0.0.min.js"></script>
+    <script src="~/Scripts/popper.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <title>@ViewBag.Title</title>
+</head>
+<body>
+    <div>
+        <div class="bg-dark" style="height:40px;">
+
+        </div>
+        <div class="">
+            <div class="row">
+                <div style="min-height:650px;" class="col-sm-2 bg-dark text-white">
+                    <div>
+                        <a style="width:240px;" class="btn bg-light btn-lg" href="~/Admin" role="button">Bảng điều khiển</a>
+                    </div>
+                    <div>
+                        <a style="width:240px;" class="btn btn-primary btn-lg" href="~/Admin/category" role="button">Loại sản phẩm</a>
+                    </div>
+                    <div>
+                        <a style="width:240px;" class="btn btn-primary btn-lg" href="~/Admin/product" role="button">Sản phẩm</a>
+                    </div>
+                    <div>
+                        <a style="width:240px;" class="btn btn-primary btn-lg" href="~/Admin/topic" role="button">Chủ đề bài viết</a>
+                    </div>
+                    <div>
+                        <a style="width:240px;" class="btn btn-primary btn-lg" href="~/Admin/post" role="button">Bài viết</a>
+                    </div>
+                    <div>
+                        <a style="width:240px;" class="btn btn-primary btn-lg" href="~/Admin/menu" role="button">Menu</a>
+                        @*<div>
+                <div class="accordion" id="accordionExample">
+                    <div class="card">
+                        <div class="card-header" id="headingCustom">
+                            <span>Vị trí Menu</span>
+                            <select name="position" class="form-control" required>
+                                <option value="[]">Chọn Vị Trí</option>
+                                <option value="mainmenu">Mainmenu</option>
+                                <option value="footer">Footer</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingOne">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link text-dark" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Loại Sản Phẩm
+                                </button>
+                            </h2>
+                        </div>
+
+                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                            <div class="card-body">
+                                @foreach (var rtop in ViewBag.listtopic)
+                                {
+                                    <div class="form-check m-2">
+                                        <input name="itemTop" class="form-check-input" type="checkbox" value="@rtop.Id" id="topicCheck_@rtop.Id" />
+                                        <label class="form-check-label" for="topicCheck_@rtop.Id">@rtop.Name</label>
+                                    </div>
+                                }
+                                <div class="form-check m-2">
+                                    <input type="submit" name="THEMTOPIC" class="btn btn-md btn-success" value="Luu" style="width:100px" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingOne">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link text-dark" type="button" data-toggle="collapse" data-target="#collapseOne1" aria-expanded="true" aria-controls="collapseOne">
+                                    Chủ Đề bài viết
+                                </button>
+                            </h2>
+                        </div>
+
+                        <div id="collapseOne1" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                            <div class="card-body">
+                                @foreach (var rcat in ViewBag.listcat)
+                                {
+                                    <div class="form-check m-2">
+                                        <input name="itemCat" class="form-check-input" type="checkbox" value="@rcat.Id" id="topicCheck_@rcat.Id" />
+                                        <label class="form-check-label" for="topicCheck_@rcat.Id">@rcat.Name</label>
+                                    </div>
+                                }
+                            </div>
+                            <div class="form-check m-2">
+                                <input type="submit" name="THEMCATEGORY" class="btn btn-md btn-success" value="Luu" style="width:100px" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingThree">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link text-dark" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseOne">
+                                    Trang Đơn
+                                </button>
+                            </h2>
+                        </div>
+
+                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                            <div class="card-body">
+                                @foreach (var rpa in ViewBag.listpage)
+                                {
+                                    <div class="form-check m-2">
+                                        <input name="itemPage" class="form-check-input" type="checkbox" value="@rpa.Id" id="pageCheck_@rpa.Id" />
+                                        <label class="form-check-label" for="pageCheck">@rpa.Title</label>
+                                    </div>
+                                }
+                            </div>
+                            <div class="form-check m-2">
+                                <input type="submit" name="THEMPAGE" class="btn btn-md btn-success" value="Luu" style="width:100px" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" id="headingFour">
+                            <h2 class="mb-0">
+                                <button class="btn btn-link text-dark" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="true" aria-controls="collapseOne">
+                                    Tùy Chỉnh
+                                </button>
+                            </h2>
+                        </div>
+                        <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                            <div class="card-body">
+                                <div class="form-check my-2">
+                                    <input class="form-control mb-2" type="text" name="name" placeholder="Tên menu" style="width:100%" />
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-control" type="text" name="link" placeholder="Tên link" style="width:100%" />
+                                </div>
+                            </div>
+                            <div class="form-check m-2">
+                                <input type="submit" name="THEMCUSTOM" class="btn btn-md btn-success" value="Luu" style="width:100px" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>*@
+                    </div>
+                    <div>
+                        <a style="width:240px;" class="btn btn-primary btn-lg" href="~/Admin/slider" role="button">Slider</a>
+                    </div>
+                    <div>
+                        <a style="width:240px;" class="btn btn-primary btn-lg" href="~/Admin/page" role="button">Trang đơn</a>
+                    </div>
+                    <div>
+                        <a style="width:240px;" class="btn btn-primary btn-lg" href="~/Admin/productdetail" role="button">Chi tiết sản phẩm</a>
+                    </div>
+                    <div>
+                        <a style="width:240px;" class="btn btn-primary btn-lg" href="~/Admin/user" role="button">User</a>
+                        <div>
+                            <a style="width:240px;" class="btn btn-primary btn-lg" href="~/Admin/contact" role="button">Liên Hệ</a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-sm">
+                    @RenderBody()
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

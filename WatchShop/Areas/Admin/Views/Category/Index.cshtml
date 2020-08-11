@@ -1,0 +1,81 @@
+﻿@model IEnumerable<WatchShop.Models.Category>
+
+@{
+    ViewBag.Title = "Quản lí loại sản phẩm";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Loại sản phẩm</h2>
+<div class="card">
+    <div class="card-header">
+        <div class="row">
+            <div class="col-sm-7">
+                Quản lí loại sản phẩm
+            </div>
+            <div class="col-sm-5 text-right">
+                <a href="~/Admin/category/create" class="btn btn-sm btn-success"><i class="fas fa-plus"></i> Thêm</a>
+                <a href="~/Admin/category/trash" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i> Thùng rác</a>
+            </div>
+        </div>
+    </div>
+    <div class="card-body p-2">
+        @Html.Partial("_MessageAlert")
+        <table class="table table-bordered table-hover">
+            <tr>
+                <th>#</th>
+                <th>Tên loại sản phẩm</th>
+                <th>Cấp cha</th>
+                <th>Thứ tự</th>
+                <th>Ngày tạo</th>
+                <th>Chức năng</th>
+                <th>Id</th>
+                
+            </tr>
+
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    <input type="checkbox" name=" checkid[]" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.name)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.parentid)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.orders)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.created_at)
+                </td>
+
+                <td>
+                    @if (item.status == 1)
+                    {
+                        <a href="@Url.Action("status","Category", new { id=item.id})" class="btn btn-sm btn-primary"><i class="fas fa-toggle-on"></i></a>
+                    }
+                    else
+                    {
+                        <a href="@Url.Action("status","Category", new { id=item.id})" class="btn btn-sm btn-danger"><i class="fas fa-toggle-off"></i></a>
+                    }
+
+                    <a href="@Url.Action("Edit", "Category", new { id = item.id })" , class="btn btn-sm btn-success"><i class="fas fa-edit"></i></a>
+                    <a href="@Url.Action("Detrash", "Category", new { id = item.id })" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>
+                    @*@Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.id })*@
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.id)
+                </td>
+            </tr>
+            }
+
+        </table>
+
+    </div>
+</div>
+

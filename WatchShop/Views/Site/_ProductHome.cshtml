@@ -1,0 +1,30 @@
+﻿
+@model IEnumerable<WatchShop.Models.Product>
+<div class="row home-2 px-5">
+    @foreach (var product in Model)
+    {
+        <div class="col-sm-3 text-center">
+            <div class="mt-5 img-thumbnail" style="border-style: groove;">
+                <div class="hinhsp rounded mx-auto d-block ">
+                    <a href="~/@product.slug">
+                        <img src="~/Image/Product/@product.img" class="rounded hinhsp chitietsp" alt="">
+                    </a>
+                    @*<button class="btn btn-info " data-toggle="modal" data-target="#myModal"> Chi tiết</button>*@
+                </div>
+                <div class="mt-2">
+                    <div>
+                        <a>@product.name</a>
+                    </div>
+                    <div class="text-danger text-center">
+                        <a>@product.price</a>
+                        <sup>đ</sup>
+                    </div>
+                    <button class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Mua</button>
+                </div>
+            </div>
+
+        </div>
+    }
+</div>
+
+

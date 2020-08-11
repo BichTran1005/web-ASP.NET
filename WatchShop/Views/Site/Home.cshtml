@@ -1,0 +1,44 @@
+﻿@model IEnumerable<WatchShop.Models.Category>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+}
+@*Slider*@
+<div class="mt-2">
+    <div class="px-5">
+        <div class="row">
+            <div class="col-sm-3 container">
+                @Html.Action("Category", "Module")
+            </div>
+            <div class="col-sm-9">
+                @Html.Action("SliderShow", "Module")
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@*Sản phẩm*@
+<div class="">
+    <div class="">
+
+        <div class="pb-3">
+            @foreach (var cat in Model)
+            {
+                <div class="p-3 text-center">
+                    <hr />
+                    <h4>@cat.name</h4>
+                    <hr>
+                </div>
+                @Html.Action("ProductHome", "Site", new { catid = cat.id })
+            }
+
+        </div>
+
+    </div>
+</div>
+<hr />
+
+
+
+

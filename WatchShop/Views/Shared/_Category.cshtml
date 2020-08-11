@@ -1,0 +1,14 @@
+﻿@model IEnumerable<WatchShop.Models.Category>
+<div>
+    <h2><a href="category">Loại Sản Phẩm</a></h2>
+    <div class="danhmuc">
+        <ul>
+            @foreach (var item in Model)
+            {
+                @Html.Action("SubCategory", "Module", new { parentid = item.id })
+              
+            }
+
+        </ul>
+    </div>
+</div>

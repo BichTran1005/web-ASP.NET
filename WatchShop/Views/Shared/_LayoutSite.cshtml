@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/LayoutSite.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.0.0.slim.min.js"></script>
+    <script src="~/Scripts/popper.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+</head>
+<body>
+    <div>
+        <ul class="nav justify-content-end  bg-dark">
+            <li class="nav-item mr-2">
+                <a style="color:red;" href="~/Site/Login">Đăng Nhập</a>
+                @*<button type="submit" value="Login" class="btn btn-link">Đăng Nhập</button>*@
+            </li>
+            <li class="nav-item mr-5">
+                <a style="color:red;" href="~/Site/Create">Đăng Kí</a>
+            </li>
+        </ul>
+        <nav class="navbar-light nav-tabs">
+            <div class="row mt-3">
+                <div class="col-sm-4 ml-5">
+                    <img src="~/Image/Logo/dongho.png" style="height:100px;">
+                </div>
+                <div class="col container">
+                    <form class="form-inline pt-5">
+                        <input class="form-control mr-1" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                </div>
+                <div class="col-sm-1 ">
+                    <a href="#">
+                        <img src="~/Image/Logo/giohang.png" style="height:50px; width:50px;" />
+                    </a>
+                </div>
+            </div>
+        </nav>
+        @*Menu*@
+        @Html.Action("MainMenu", "Module")
+
+        
+        @RenderBody()
+        
+        <div class="row bg-secondary p-3">
+            <div class="col-sm-4">
+                <h2>The Watch Shop</h2>
+                @Html.Action("Post", "Module")
+            </div>
+
+            <div class="col-sm-4 text-white">
+                <form>
+                    <div class="">
+                        <a class="">Nhập Mail của bạn để được thông báo về các chương trình khuyến mãi!</a>
+                    </div>
+                    <div class="form-group mt-1">
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Gửi</button>
+                </form>
+            </div>
+
+            <div class="col-sm-4">
+                <a>Địa chỉ:xxx, Quận 9, TP.HCM</a><br />
+                <a>Liên Hệ: thewactchsop@gamil.com</a>
+            </div>
+        </div>
+    </div>
+    <footer class="text-center p-1 bg-dark">
+        <a>Copy Right By Trần Thị Bích</a>
+    </footer>
+</body>
+</html>

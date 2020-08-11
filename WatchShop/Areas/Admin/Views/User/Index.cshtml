@@ -1,0 +1,95 @@
+﻿@model IEnumerable<WatchShop.Models.User>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Index</h2>
+<div class="card">
+    <div class="card-header">
+        <div class="row">
+            <div class="col-sm-7">
+                Quản lí loại sản phẩm
+            </div>
+            <div class="col-sm-5 text-right">
+                <a href="~/Admin/user/create" class="btn btn-sm btn-success"><i class="fas fa-plus"></i> Thêm</a>
+                <a href="~/Admin/user/trash" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i> Thùng rác</a>
+            </div>
+        </div>
+    </div>
+    <div class="card-body p-2">
+        @Html.Partial("_MessageAlert")
+        <table class="table table-bordered table-hover">
+            <tr>
+                <th>#</th>
+                <th>Tên người dùng</th>
+                <th>Tài khoản</th>
+                <th>Mật khẩu</th>
+                <th>Email</th>
+                <th>Giới tính</th>
+                <th>Số điện thoại</th>
+                <th>Hình</th>
+                <th>Cấp quyền</th>
+                <th>Trạng thái</th>
+                <th>ID</th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>   <input type="checkbox" name=" checkid[]" /></td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.fullname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.username)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.password)
+                        @*<p>**********</p>*@
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.email)
+                    </td>
+                    <td>
+                        @if (item.gender == 0)
+                        {
+                            <p>Nam</p>
+                        }
+                        else
+                        {
+                            <p>Nữ</p>
+                        }
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.phone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.img)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.access)
+                    </td>
+                    <td>
+                        @if (item.status == 1)
+                        {
+                            <a href="@Url.Action("status","User", new { id=item.id})" class="btn btn-sm btn-primary"><i class="fas fa-toggle-on"></i></a>
+                        }
+                        else
+                        {
+                            <a href="@Url.Action("status","User", new { id=item.id})" class="btn btn-sm btn-danger"><i class="fas fa-toggle-off"></i></a>
+                        }
+
+                        <a href="@Url.Action("Edit", "User", new { id = item.id })" , class="btn btn-sm btn-success"><i class="fas fa-edit"></i></a>
+                        <a href="@Url.Action("Detrash", "User", new { id = item.id })" class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.id)
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>

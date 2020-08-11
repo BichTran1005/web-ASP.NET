@@ -1,0 +1,17 @@
+﻿@model IEnumerable<WatchShop.Models.Post>
+@{
+    ViewBag.Title = "PostTopic";
+    Layout = "~/Views/Shared/_LayoutSite.cshtml";
+}
+
+<div class="container">
+    @foreach (var item in Model)
+    {
+        <div class="border m-1">
+            <h5><a href="~/@item.slug">@item.title</a></h5>
+        </div>
+
+    }
+</div>
+
+
